@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form enctype="multipart/form-data" >
+		<p:messages autoUpdate="true" />
+		<p:fieldset style="width:100%">
+			<h3>Add new Administrator : </h3>
+			<br />
+
+			<h:panelGrid columns="2" style="margin-bottom:30px;margin-left:40px" cellpadding="20"  >
+				
+				<p:outputLabel for="firstName" value="First name:" />
+				<p:inputText id="firstName" value="#{usersMB.admin.firstName}">
+				</p:inputText>
+				
+				<p:outputLabel for="lastName" value="Last name:" />
+				<p:inputText id="lastName" value="#{usersMB.admin.lastName}">
+				</p:inputText>
+				
+				<p:outputLabel for="email" value="Email :" />
+				<p:inputText id="email" value="#{usersMB.admin.email}">
+				</p:inputText>
+
+				<p:outputLabel for="image" value="Photo :" />
+				<p:fileUpload id="image" value="#{fileUploadManagedBean.file}"  allowTypes="/(\.|\/)(gif|jpe?g|png)$/" sizeLimit="100000" description="Select Images" 
+				 mode="simple"></p:fileUpload>
+
+				<h:commandButton value="Add " styleClass="btn btn-primary" action="#{usersMB.addNewAdmin()}"></h:commandButton>
+				<br />
+				<p class="bg-info">
+					An email will be sent that contains login and password.
+				</p>
+			</h:panelGrid>
+		</p:fieldset>
+	</h:form>
+
+</ui:composition>

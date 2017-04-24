@@ -1,0 +1,68 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h3>All available books:</h3>
+	<h:form>
+		<p:dataTable var="book" value="#{booksMB.getAllBooks()}" filteredValue="#{booksMB.filteredbooks}"
+			itemType="none" paginator="true" rows="5" styleClass="paginated" >
+
+			<p:column headerText="Cover image">
+				<p:graphicImage value="#{booksMB.readImage()}"
+					style="width:80px;height: 80px;">
+					<f:param name="imageName" value="#{book.coverImage}" />
+				</p:graphicImage>
+			</p:column>
+
+			<p:column headerText="Title" filterMatchMode="contains" filterBy="#{book.bookTitle}">
+				<h:outputText value="#{book.bookTitle}" />
+			</p:column>
+
+			<p:column headerText="Author Name" filterMatchMode="contains" filterBy="#{book.bookAutor}">
+				<h:outputText value="#{book.bookAutor}" />
+			</p:column>
+
+			<p:column headerText="Category">
+				<h:outputText value="#{book.category.categoryName}" />
+			</p:column>
+			
+			<p:column headerText="ISBN" filterBy="#{book.isbn}" filterMatchMode="contains">
+				<h:outputText value="#{book.isbn}" />
+			</p:column>
+
+			<p:column headerText="Available quantity">
+				<h:outputText value="#{book.avaibleQuantity}" />
+			</p:column>
+
+			<p:column headerText="Copies List">
+				<p:commandLink value="View" styleClass="ui-icon ui-icon-extlink" style="margin:auto;"
+					action="#{booksMB.goTo('listCopies')}" update=":center">
+					<f:setPropertyActionListener target="#{booksMB.book}"
+						value="#{book}" />
+				</p:commandLink>
+			</p:column>
+
+			<p:column headerText="Action" >
+				<p:commandButton  icon="ui-icon-trash" styleClass="btn btn-danger" style="width: 40px;padding: 0;margin:auto" action="#{booksMB.deleteBook(book)}" update="@all" >
+					<p:confirm header="Confirmation" message="Are you sure?"
+						icon="ui-icon-alert" />
+				</p:commandButton>
+				<p:commandButton  icon="ui-icon-pencil"  style="width: 40px;padding: 0;margin:auto" styleClass="btn btn-info" action="#{booksMB.goTo('updateBook')}" update="@all" >
+					<f:setPropertyActionListener target="#{booksMB.book}" value="#{book}" />
+				</p:commandButton>
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+	
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+			<p:commandButton value="Yes" type="button" 
+				styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+			<p:commandButton value="No" type="button"
+				styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+	</p:confirmDialog>
+		
+	
+
+</ui:composition>

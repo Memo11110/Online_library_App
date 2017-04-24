@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:background="#ff3971ee"
+    >
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="fill_parent"
+        android:src="@drawable/bg_body"
+        android:id="@+id/coverImage"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/available_copies"
+        android:text="1"
+        android:textColor="#000"
+        android:id="@+id/availableCopiesNbr"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="5dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Big Data"
+        android:id="@+id/bookTitle"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="100dp"
+        android:textColor="#ffdae4ea"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="By Omar EL OUAFI"
+        android:id="@+id/bookAutor"
+        android:layout_below="@+id/bookTitle"
+        android:layout_alignLeft="@+id/bookTitle"
+        android:layout_alignStart="@+id/bookTitle"
+        android:layout_marginTop="14dp"
+        android:textColor="#eee"
+        />
+
+</RelativeLayout>

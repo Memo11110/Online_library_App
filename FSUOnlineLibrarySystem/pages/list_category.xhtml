@@ -1,0 +1,25 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	>
+	<h3>All available categories:</h3>
+	<p:dataTable var="cat" value="#{booksMB.getAvaibleCategories()}"  itemType="none" paginator="true"  rows="5" styleClass="paginated" style="width:50%;margin-left:140px">
+		
+		
+		<p:column headerText="Name ">
+			<h:outputText value="#{cat.categoryName}" />
+		</p:column>
+
+		<p:column headerText="Action" style="width:30px">
+			<p:commandButton action="#{booksMB.deleteCategory(cat)}" value="delete" update="@all" icon="ui-icon-closethick"/>
+		</p:column>
+		
+	</p:dataTable>
+	<br/>
+	<br/>
+	<p:commandButton action="#{booksMB.goTo('addCategory')}" icon="ui-icon-circle-plus" value="Add new category" styleClass="btn btn-primary" update="@all"/>
+	
+
+</ui:composition>

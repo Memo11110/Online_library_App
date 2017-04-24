@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	>
+	<h3>All available copies for " <h:outputText value="#{booksMB.book.bookTitle}" /> " book :</h3>
+	<p:dataTable var="copy" value="#{booksMB.book.copies}"   itemType="none" paginator="true"  rows="10" styleClass="paginated">
+		
+		<p:column headerText="Accession Number">
+			<h:outputText value="#{copy.accessionNumber}" />
+		</p:column>
+
+		<p:column headerText="Status">
+			<h:outputText value="#{copy.status}" />
+		</p:column>
+		
+		<p:column headerText="Action">
+			<p:commandButton icon="ui-icon-trash" iconPos="left" value="delete" styleClass="btn btn-danger" style="width: 80px;padding: 0;margin:5px"  actionListener="#{booksMB.deleteBookCopy(copy)}" update="@all" >
+					<p:confirm header="Confirmation" message="Are you sure?"
+						icon="ui-icon-alert" />
+			</p:commandButton>
+			<p:commandButton icon="ui-icon-pencil" styleClass="btn btn-warning" value="update" style="width: 83px;padding: 0;margin:5px"  action="#{booksMB.goTo('updateBookCopy')}" update=":center" >
+				<f:setPropertyActionListener target="#{booksMB.selectedCopy}" value="#{copy}" />
+			</p:commandButton>
+			<p:commandButton rendered="#{copy.status == 'BORROWED'}" icon="ui-icon-info" styleClass="btn btn-info" value="more details" 
+			style="width: 130px;padding: 0;margin:5px" update=":center"  action="#{booksMB.goTo('copyDetails')}">
+					<f:setPropertyActionListener target="#{booksMB.selectedCopy}" value="#{copy}" />
+			</p:commandButton>
+		</p:column>
+
+	</p:dataTable>
+	
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+			<p:commandButton value="Yes" type="button" 
+				styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+			<p:commandButton value="No" type="button"
+				styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+	</p:confirmDialog>
+		
+	<br/>
+	<p:commandButton action="#{booksMB.goTo('listBooks')}" icon="ui-icon-arrowreturnthick-1-w" value="Back to books list" styleClass="btn btn-primary" update=":center"/>
+	<p:commandButton action="#{booksMB.goTo('addNewBookCopy')}" icon="ui-icon-circle-plus" value="Add new copy for this book !" styleClass="btn btn-primary" update=":center"/>
+	
+</ui:composition>

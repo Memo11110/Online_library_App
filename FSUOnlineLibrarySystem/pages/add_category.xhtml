@@ -1,0 +1,26 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form>
+		<p:messages autoUpdate="true" />
+		<p:fieldset>
+		<h3>Add new category :</h3>
+		<br/>
+
+		<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+
+				<p:outputLabel for="title" value="Category Name:" />
+				<p:inputText id="title" value="#{booksMB.category.categoryName}">
+				</p:inputText>
+
+				<p:commandButton value="Submit" icon="ui-icon-check" update="@all"
+				action="#{booksMB.addNewCategory()}"
+				 />
+			</h:panelGrid>
+		</p:fieldset>
+	</h:form>
+
+</ui:composition>

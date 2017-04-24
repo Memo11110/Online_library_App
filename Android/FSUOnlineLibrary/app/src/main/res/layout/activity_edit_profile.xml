@@ -1,0 +1,101 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.fsu.mobile.activity.EditProfileActivity">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Edit your profile :"
+                android:textSize="18sp"
+                android:textColor="#ff19bce7"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Login :"
+                android:layout_marginTop="40dp"
+                android:id="@+id/lgText" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:inputType="textEmailAddress"
+                android:id="@+id/newLogin"
+                android:layout_toRightOf="@+id/lgText"
+                android:layout_toEndOf="@+id/lgText" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password :"
+                android:layout_marginTop="38dp"
+                android:id="@+id/passwordText"
+                android:layout_below="@+id/lgText"
+
+                />
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:id="@+id/newPassword"
+                android:layout_toEndOf="@+id/passwordText"
+                android:layout_toRightOf="@+id/passwordText"
+                android:layout_below="@+id/passwordText"
+                android:layout_alignLeft="@+id/newLogin"
+                android:layout_alignStart="@+id/newLogin" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Confirm password :"
+                android:layout_marginTop="160dp"
+                android:id="@+id/passwordTextConfirm"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:id="@+id/passwordConfirm"
+                android:layout_toEndOf="@+id/passwordTextConfirm"
+                android:layout_toRightOf="@+id/passwordTextConfirm"
+                android:layout_below="@+id/passwordTextConfirm"
+                android:layout_alignLeft="@+id/newPassword"
+                android:layout_alignStart="@+id/newPassword" />
+
+            <Button
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="Submit"
+                android:id="@+id/btnEdit"
+                android:layout_below="@+id/passwordTextConfirm"
+                android:layout_marginTop="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                />
+
+
+        </RelativeLayout>
+
+
+
+        </ScrollView>
+
+
+</RelativeLayout>

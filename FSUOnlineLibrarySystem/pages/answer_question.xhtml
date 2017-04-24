@@ -1,0 +1,28 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form enctype="multipart/form-data" >
+		<p:messages autoUpdate="true" />
+		<p:fieldset style="width:100%">
+			<h3>Answer to a question : </h3>
+			<br />
+
+			<h:panelGrid columns="2" style="margin-bottom:30px" cellpadding="20"  >
+				
+				<p:outputLabel value="Question :" />
+				<p:outputLabel value="#{booksMB.question.value}" />
+				
+				<p:outputLabel for="ans" value="Answer :" />
+				<p:inputTextarea id="ans" value="#{booksMB.question.response}"  cols="50"/>
+				
+				
+				<h:commandButton value="Submit the answer!" styleClass="btn btn-primary" action="#{booksMB.updateQuestion()}"></h:commandButton>
+				<br />
+			</h:panelGrid>
+		</p:fieldset>
+	</h:form>
+
+</ui:composition>

@@ -1,0 +1,69 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h3>All available Users:</h3>
+	<p:messages autoUpdate="true" closable="true"/>
+	<h:form>
+		<p:dataTable var="student" value="#{usersMB.allStudents}" 
+			itemType="none" paginator="true" rows="5" styleClass="paginated" >
+
+			<p:column headerText="Picture" rendered="#{!student.picture.equals('')}">
+				<p:graphicImage value="#{booksMB.readImage()}" 
+					style="width:80px;height: 80px;">
+					<f:param name="imageName" value="#{student.picture}" />
+				</p:graphicImage>
+			</p:column>
+			
+			<p:column headerText="Picture" rendered="#{student.picture.equals('')}">
+				<h:graphicImage library="images" name="stock_people.png" style="width:80px;height: 80px;" />
+			</p:column>
+
+			<p:column headerText="Full Name" >
+				<h:outputText value="#{student.firstName.concat(' ').concat(student.lastName)}" />
+			</p:column>
+
+			<p:column headerText="Email">
+				<h:outputText value="#{student.email}" />
+			</p:column>
+			
+			<p:column headerText="Date Added ">
+				<h:outputText value="#{student.addedDate}">
+					<f:convertDateTime locale="US"/>
+				</h:outputText>
+			</p:column>
+
+			<p:column headerText="Account Status">
+				<h:outputText value="#{student.status}" style="background-color:green;color: white;" rendered="#{student.status == usersMB.accountActivated}"/>
+				<h:outputText value="#{student.status}" style="background-color:red;color: white;" rendered="#{student.status != usersMB.accountActivated}"/>
+				<p:spacer width="20px"/>
+				<p:commandButton  icon="ui-icon-key" styleClass="btn btn-warning" style="width: 40px;padding: 0;margin:auto" action="#{usersMB.alterStudentStatus(student)}" update="@all" >
+					<p:confirm header="Confirmation" message="Are you sure?"
+						icon="ui-icon-alert" />
+				</p:commandButton>
+			</p:column>
+			
+			<p:column headerText="Action" >
+				<p:commandButton  icon="ui-icon-trash" styleClass="btn btn-danger" style="width: 40px;padding: 0;margin:auto" action="#{usersMB.deleteStudent(student)}" update="@all" >
+					<p:confirm header="Confirmation" message="Are you sure?"
+						icon="ui-icon-alert" />
+				</p:commandButton>
+				<p:commandButton  icon="ui-icon-pencil"  style="width: 40px;padding: 0;margin:auto" styleClass="btn btn-info" action="#{usersMB.goTo('updateStudent')}" update="@all" >
+					<f:setPropertyActionListener target="#{usersMB.student}" value="#{student}" />
+				</p:commandButton>
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+	
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			<p:commandButton value="Yes" type="button" 
+				styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+			<p:commandButton value="No" type="button"
+				styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+	</p:confirmDialog>
+		
+	
+
+</ui:composition>

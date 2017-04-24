@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h3 style="text-decoration: underline;">More details about this copy:</h3>
+	<table class="table"
+		style="width: 500px; margin-left: 100px; margin-top: 40px;">
+		<tr>
+			<td class="active">Book Name</td>
+			<td class="active"><h:outputText
+					value="#{booksMB.book.bookTitle}" /></td>
+		</tr>
+		<tr>
+			<td class="success">Student Full Name</td>
+			<td class="success"><h:outputText
+					value="#{borrowMB.getFromCopy(booksMB.selectedCopy).borrower.firstName.concat(' ')
+				.concat(borrowMB.getFromCopy(booksMB.selectedCopy).borrower.lastName)}" />
+			</td>
+		</tr>
+		<tr>
+			<td class="warning">Accession Number</td>
+			<td class="warning"><h:outputText
+					value="#{booksMB.selectedCopy.accessionNumber}" /></td>
+		</tr>
+		<tr>
+			<td class="info">Date of rent</td>
+			<td class="info"><h:outputText
+					value="#{borrowMB.getFromCopy(booksMB.selectedCopy).dateOfRent}">
+					<f:convertDateTime locale="US" />
+				</h:outputText></td>
+		</tr>
+		<tr>
+			<td class="warning">Date of return</td>
+			<td class="warning"><h:outputText
+					value="#{borrowMB.getFromCopy(booksMB.selectedCopy).dateOfReturn}">
+					<f:convertDateTime locale="US" />
+				</h:outputText></td>
+		</tr>
+	</table>
+	<h:form>
+		<p:commandButton value="Return to list" icon="ui-icon-arrowreturnthick-1-w"
+			action="#{booksMB.goTo('listCopies')}" update=":center" styleClass="btn btn-info">
+			<f:setPropertyActionListener target="#{booksMB.book}" value="#{booksMB.book}" />
+		</p:commandButton>
+	</h:form>
+</ui:composition>

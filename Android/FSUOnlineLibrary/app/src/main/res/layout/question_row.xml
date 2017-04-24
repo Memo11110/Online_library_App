@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12"
+        android:id="@+id/questionIndex"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        />
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Q: What's the autor name .What's the autor name ....What's the autor name ...."
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/questionIndex"
+        android:layout_toEndOf="@+id/questionIndex"
+        android:layout_marginLeft="10dp"
+        android:textColor="#eee"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-condensed"
+        />
+    <TextView
+        android:id="@+id/answer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ans.: What's the autor name .What's the autor name ....What's the autor name ...."
+        android:layout_below="@+id/question"
+        android:layout_alignLeft="@+id/question"
+        android:layout_alignStart="@+id/question"
+        android:layout_marginTop="10dp"
+        android:textColor="#ff2eaa81"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-condensed"
+        />
+</RelativeLayout>

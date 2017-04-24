@@ -1,0 +1,54 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h3>All available Requests from students:</h3>
+	<h:form>
+		<p:dataTable var="borrow" value="#{borrowMB.getAllNewRequests()}"
+			rowIndexVar="index" itemType="none" paginator="true" rows="5"
+			styleClass="paginated">
+
+			<p:column headerText="#">
+				<h:outputText value="#{index+1}" />
+			</p:column>
+
+			<p:column headerText="Book title">
+				<h:outputText
+					value="#{borrowMB.getBookByCopy(borrow.copy).bookTitle}" />
+			</p:column>
+
+			<p:column headerText="Student Fulle Name">
+				<h:outputText
+					value="#{borrow.borrower.firstName.concat(' ').concat(borrow.borrower.lastName)}" />
+			</p:column>
+
+			<p:column headerText="Date of rent">
+				<h:outputText value="#{borrow.dateOfRent}">
+					<f:convertDateTime locale="US" />
+				</h:outputText>
+			</p:column>
+
+			<p:column headerText="Date of return">
+				<h:outputText value="#{borrow.dateOfReturn}">
+					<f:convertDateTime locale="US" />
+				</h:outputText>
+			</p:column>
+
+			<p:column headerText="Action">
+				<p:commandButton icon="ui-icon-alert" styleClass="btn btn-danger"
+					style="width: 40px;padding: 0;margin:auto" onclick="PF('dlg').show();">
+					<f:setPropertyActionListener target="#{borrowMB.borrow}" value="#{borrow}" />
+				</p:commandButton>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+	<p:dialog widgetVar="dlg" header="Answer to this request">
+		<p:commandButton value="Accept" 
+			styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="#{borrowMB.acceptRequest(borrowMB.borrow)}" update="@all"/>
+		<p:commandButton value="Reject"
+			styleClass="ui-confirmdialog-no pull-right" icon="ui-icon-close"  action="#{borrowMB.rejectRequest(borrowMB.borrow)}" update="@all"/>
+	</p:dialog>
+
+</ui:composition>

@@ -1,0 +1,131 @@
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    >
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.fsu.mobile.activity.BookActivity">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/placeholder"
+        android:id="@+id/imageCover" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="3dp"
+        android:layout_alignTop="@+id/imageCover"
+        android:layout_toRightOf="@+id/imageCover"
+        android:layout_toEndOf="@+id/imageCover"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bookTitle"
+            android:text="Title: Disert One"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bookAutor"
+            android:text="Autor : Mr. JOne In"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bookCategory"
+            android:text="Category: IT"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bookISBN"
+            android:text="ISBN : 12"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bookAvQuantity"
+            android:text="Available copies : 12"
+            />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="Borrow a copy"
+        android:id="@+id/btnBorrow"
+        android:drawableLeft="@android:drawable/stat_sys_upload"
+        android:layout_below="@+id/imageCover"
+        android:layout_alignLeft="@+id/btnQuestions"
+        android:layout_alignStart="@+id/btnQuestions"
+        android:layout_alignRight="@+id/btnQuestions"
+        android:layout_alignEnd="@+id/btnQuestions"
+        android:layout_marginTop="50dp"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="Return a copy "
+        android:id="@+id/btnReturn"
+        android:drawableLeft="@android:drawable/stat_sys_download"
+        android:layout_below="@+id/btnBorrow"
+        android:layout_alignLeft="@+id/btnBorrow"
+        android:layout_alignStart="@+id/btnBorrow"
+        android:layout_alignRight="@+id/btnBorrow"
+        android:layout_alignEnd="@+id/btnBorrow" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="Questions/Answers"
+        android:id="@+id/btnQuestions"
+        android:drawableLeft="@android:drawable/ic_menu_help"
+        android:layout_below="@+id/btnReturn"
+        android:layout_centerHorizontal="true" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:text="Report a damage "
+        android:id="@+id/btnReportDamage"
+        android:drawableLeft="@android:drawable/ic_menu_directions"
+        android:layout_below="@+id/btnQuestions"
+        android:layout_alignLeft="@+id/btnQuestions"
+        android:layout_alignStart="@+id/btnQuestions"
+        android:layout_alignRight="@+id/btnQuestions"
+        android:layout_alignEnd="@+id/btnQuestions" />
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/btnReportDamage"
+    android:layout_marginTop="20dp"
+    >
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@android:drawable/ic_menu_info_details"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="the generated recipient is located under FUSLibrarySystem folder in root of your SdCard"
+        android:textColor="#ff3971ee"
+        />
+    </LinearLayout>
+
+</RelativeLayout>
+</ScrollView>

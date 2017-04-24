@@ -1,0 +1,145 @@
+@import url(http://fonts.googleapis.com/css?family=Exo);
+
+body,html {
+	padding: 0;
+	background: url("#{resource['images/bg_body.jpg']}") no-repeat center
+		center fixed !important;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	/*background-size: cover;*/
+	position: relative;
+	min-height: 100%;
+}
+
+.loginForm {
+	margin: 100px auto;
+	width: 500px;
+	height: 400px;
+	display: block;
+	border-bottom-style: ridge;
+}
+
+.loginForm legend img {
+	width: 100px;
+}
+
+.loginForm legend h3 {
+	font-family: 'Exo', sans-serif;
+	padding-top: 7px;
+}
+
+.loginBtn {
+	margin-top: 20px;
+}
+
+#logo {
+	width: 100px;
+}
+
+#homeImg {
+	width: 32px;
+}
+/****************Main Content******************/
+.mainContent {
+	background: #fff;
+	min-height: 100%!impotant;
+	margin: 10px auto;
+	position: relative;
+}
+
+.manageLink img {
+	width: 200px;
+	padding: 2px;
+	border: #5bc0de 1px solid;
+	cursor: pointer;
+}
+
+.manageLabel {
+	position: absolute;
+	margin-top: -29px;
+	width: 199px;
+	font-size: 18px;
+	border-radius: 0px;
+}
+/****************END Main Content******************/
+
+.listDataTable table { 
+    border-collapse: separate; 
+    border-spacing: 10px; 
+    *border-collapse: expression('separate', cellSpacing = '10px');
+}
+
+/****************Header******************/
+.header {
+	padding: 9px 15px;
+	border-bottom: 1px solid #eee;
+	background-color: #0480be;
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-moz-border-radius-topleft: 5px;
+	-moz-border-radius-topright: 5px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.header :nth-child(2) {
+	padding-top: 23px;
+	font-weight: bold;
+	font-size: 16px;
+	font-family: Times New Roman, sans serif;
+}
+
+.secondary {
+	border-bottom: 1px #0480be dotted;
+}
+
+.backBtn {
+	cursor: pointer;
+}
+/****************END Header******************/
+
+/****************Main Menu******************/
+.mainMenu {
+	height: 100%;
+	display: inline-block;
+	padding: 2px;
+	font-weight: bold !important;
+	border: 1px solid #0480be;
+	padding: 0;
+}
+
+.ui-menu {
+	width: 100% !important;
+	background: #0266C8 !important;
+	font-weight: bold !important;
+}
+
+.ui-menu .ui-menuitem-link {
+	font-weight: bold !important;
+}
+
+.menulabel {
+	display: inline-block;
+	vertical-align: bottom;
+	margin-left: 8%;
+	margin-bottom: 3%;
+	font-family: 'Exo', sans-serif;
+	font-size: 15pt;
+}
+
+.menulabel img {
+	width: 40px;
+}
+/****************END Main Menu******************/
+.footer {
+	font-family: Georgia, Serif;
+	border-top: 1px solid #ddd;
+	font-size: 20px;
+}
+
+.footer p {
+	font-weight: bold;
+	margin-right: 100px;
+	margin-top: 5px;
+}

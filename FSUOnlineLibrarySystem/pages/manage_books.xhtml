@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="utf-8" />
+	<title>FSU Online Library System</title>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+	<div class="container mainContent">
+		<div class="row header">
+			<div class="col-md-1">
+				<IMG alt="logo" src="#{resource['images/logo.png']}" id="logo" />
+			</div>
+			<div class="col-md-6">
+				<h3 style="color: white;">FSU Online Library System</h3>
+				<span>Admin Panel</span>
+			</div>
+		</div>
+		<div class="row secondary">
+			<div class="col-md-3 backBtn"
+				onclick="javascript:location.href='index.xhtml'">
+				<IMG alt="home" src="#{resource['images/back.png']}" id="homeImg" />
+				HOME
+			</div>
+			<div class="backBtn" style="margin-left: 92%;"
+				onclick="javascript:location.href='login.xhtml'">
+				<IMG alt="home" src="#{resource['images/exit.png']}" id="homeImg" />
+				Log out
+			</div>
+		</div>
+		<br />
+		<div class="row">
+			<div class="col-md-3 mainMenu">
+				<div class="menulabel">
+					<IMG alt="manage users" src="#{resource['images/menu.png']}" />
+					Main Menu
+				</div>
+				<h:form>
+					<p:menu>
+						<p:submenu label="Books">
+							<p:menuitem value="List books"
+								actionListener="#{booksMB.goTo('listBooks')}"
+								icon="ui-icon-folder-open" update=":center" ajax="true" />
+							<p:menuitem value="Add new book"
+								actionListener="#{booksMB.goTo('addBook')}" ajax="true"
+								update=":center" icon="ui-icon-circle-plus" />
+						</p:submenu>
+						<p:submenu label="Requests">
+							<p:menuitem value="List Requests"
+								actionListener="#{booksMB.goTo('listRequests')}"
+								icon="ui-icon-folder-open" update=":center" />
+							<p:menuitem value="All questions"
+								actionListener="#{booksMB.goTo('listNonAnswQuestions')}"
+								icon="ui-icon-comment" update=":center" />
+							<p:menuitem value="Damage reports"
+								actionListener="#{booksMB.goTo('damageReports')}"
+								icon="ui-icon-alert" update=":center" />
+						</p:submenu>
+						<p:submenu label="Categories">
+							<p:menuitem value="List Categories"
+								actionListener="#{booksMB.goTo('litsCategories')}" update=":center"
+								icon="ui-icon-folder-open" />
+							<p:menuitem value="Add Category"
+								actionListener="#{booksMB.goTo('addCategory')}" update=":center"
+								icon="ui-icon-circle-plus" />
+						</p:submenu>
+					</p:menu>
+				</h:form>
+			</div>
+			<div class="col-md-9" style="margin-top: -19px;">
+				<h:panelGroup id="center" >
+					<h:panelGroup rendered="#{booksMB.action.equals('listBooks')}">
+						<ui:include src="book_list.xhtml" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{booksMB.action.equals('addBook')}">
+						<ui:include src="add_book.xhtml" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{booksMB.action.equals('addCategory')}">
+						<ui:include src="add_category.xhtml" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{booksMB.action.equals('litsCategories')}">
+						<ui:include src="list_category.xhtml" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{booksMB.action.equals('listCopies')}">
+						<ui:include src="list_copies.xhtml" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{booksMB.action.equals('updateBook')}">
+						<ui:include src="update_book.xhtml" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{booksMB.action.equals('updateBookCopy')}">
+						<ui:include src="update_copy.xhtml" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{booksMB.action.equals('addNewBookCopy')}">
+						<ui:include src="add_copy.xhtml" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{booksMB.action.equals('listRequests')}">
+						<ui:include src="requests.xhtml" />
+					</h:panelGroup>
+					<h:panelGroup
+						rendered="#{booksMB.action.equals('listNonAnswQuestions')}">
+						<ui:include src="questions.xhtml" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{booksMB.action.equals('answerQuestion')}">
+						<ui:include src="answer_question.xhtml" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{booksMB.action.equals('damageReports')}">
+						<ui:include src="damage_reports.xhtml" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{booksMB.action.equals('copyDetails')}">
+						<ui:include src="copy_details.xhtml" />
+					</h:panelGroup>
+					
+				</h:panelGroup>
+			</div>
+
+		</div>
+		<br />
+		<div class="row footer">
+			<div class="col-md-12">
+				<SPAN class="pull-right">@Copyright 2014</SPAN>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>

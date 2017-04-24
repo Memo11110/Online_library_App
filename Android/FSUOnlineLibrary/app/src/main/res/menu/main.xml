@@ -1,0 +1,50 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.fsu.mobile.activity.MainActivity" >
+    <item android:id="@+id/refresh"
+        android:title="Refresh"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:icon="@android:drawable/ic_popup_sync"
+        />
+    <item android:id="@+id/search"
+        android:title="Refresh"
+        android:orderInCategory="100"
+        android:showAsAction="always"
+        android:icon="@android:drawable/ic_menu_search"
+        />
+    <item
+        android:id="@+id/menu_overflow"
+        android:icon="@drawable/ic_menu_moreoverflow_normal_holo_light"
+        android:orderInCategory="11111"
+        android:showAsAction="always"
+        android:title="More"
+        >
+        <menu>
+            <item android:id="@+id/returns"
+                android:title="History of returns"
+                android:orderInCategory="100"
+                android:showAsAction="always"
+                android:icon="@drawable/ic_history_1"
+                />
+            <item android:id="@+id/borrows"
+                android:title="History of borrows"
+                android:orderInCategory="100"
+                android:showAsAction="always"
+                android:icon="@drawable/ic_history_1"
+                />
+            <item android:id="@+id/editProfile"
+                android:title="Edit Profil"
+                android:orderInCategory="100"
+                android:showAsAction="never"
+                android:icon="@android:drawable/ic_menu_edit"
+            />
+            <item android:id="@+id/logout"
+                android:title="Log out"
+                android:orderInCategory="100"
+                android:showAsAction="never"
+                android:icon="@android:drawable/ic_lock_power_off"
+                />
+            </menu>
+    </item>
+</menu>

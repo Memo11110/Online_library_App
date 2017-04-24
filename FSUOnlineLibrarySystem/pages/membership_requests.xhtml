@@ -1,0 +1,45 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h3>All new membership requests:</h3>
+	<p:messages autoUpdate="true" closable="true"/>
+	<h:form>
+		<p:dataTable var="student" value="#{usersMB.newMembershipRequests}" 
+			itemType="none" paginator="true" rows="5" styleClass="paginated" >
+
+			<p:column headerText="Full Name" >
+				<h:outputText value="#{student.firstName.concat(' ').concat(student.lastName)}" />
+			</p:column>
+
+			<p:column headerText="Email">
+				<h:outputText value="#{student.email}" />
+			</p:column>
+			
+			<p:column headerText="Date sent">
+				<h:outputText value="#{student.addedDate}">
+					<f:convertDateTime locale="US"/>
+				</h:outputText>
+			</p:column>
+			
+			<p:column headerText="Action" >
+				<p:commandButton  icon="ui-icon-alert" value ="Decide" styleClass="btn btn-warning" onclick="PF('dlg').show();" style="width: 40px;padding: 0;margin:auto" 
+				>
+					<f:setPropertyActionListener target="#{usersMB.student}" value="#{student}" />
+				</p:commandButton>
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+	
+	<p:dialog widgetVar="dlg" header="Answer to this request">
+		<p:commandButton value="Accept" 
+			styleClass="ui-confirmdialog-yes" icon="ui-icon-check" action="#{usersMB.acceptRequest(usersMB.student)}" update="@all"/>
+		<p:commandButton value="Reject"
+			styleClass="ui-confirmdialog-no pull-right" icon="ui-icon-close"  action="#{usersMB.rejectRequest(usersMB.student)}" update="@all"/>
+	</p:dialog>
+		
+	
+
+</ui:composition>

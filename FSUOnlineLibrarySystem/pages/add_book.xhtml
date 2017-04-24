@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:form enctype="multipart/form-data" >
+		<p:messages autoUpdate="true" />
+		<p:fieldset style="width:100%">
+			<h3>Add new book : </h3>
+			<br />
+
+			<h:panelGrid columns="2" style="margin-bottom:30px" cellpadding="20"  >
+				
+				<p:outputLabel for="title" value="Book Title:" />
+				<p:inputText id="title" value="#{booksMB.book.bookTitle}" required="true" requiredMessage="Title is required">
+				</p:inputText>
+				
+				<p:outputLabel for="autorName" value="Autor :" />
+				<p:inputText id="autorName" value="#{booksMB.book.bookAutor}" required="true" requiredMessage="Autor is required">
+				</p:inputText>
+				
+				<p:outputLabel for="isbn" value="ISBN :" />
+				<p:inputText id="isbn" value="#{booksMB.book.isbn}" required="true" requiredMessage="ISBN is required">
+				</p:inputText>
+
+				<p:outputLabel for="quantity" value="Quantity :" />
+					<p:inputText id="quantity" value="#{booksMB.book.avaibleQuantity}">
+				</p:inputText>
+
+				<p:outputLabel for="category" value="Category :" />
+				<p:selectOneMenu id="category" value="#{booksMB.category}" required="true" effect="fade" >
+					<f:selectItems value="#{booksMB.avaibleCategories}" var="cat" itemLabel="#{cat.categoryName}"  />
+					<f:converter binding="#{categoryConverter}" />
+				</p:selectOneMenu>
+
+				<p:outputLabel for="cover" value="Cover image :" />
+				<p:fileUpload id="cover" value="#{fileUploadManagedBean.file}"  
+				allowTypes="/(\.|\/)(gif|jpe?g|png)$/" sizeLimit="100000" description="Select Images" required="true"
+				requiredMessage="Plz, add a cover image for this book!!"
+				 mode="simple"></p:fileUpload>
+
+				<p:outputLabel for="copies" value="Accession Numbers (*) :" />
+				<p:inputTextarea rows="6" cols="50" id="copies" placeholder="B112;A232;AS287;C2938"
+					value="#{booksMB.accessionCodes}" />
+					
+				<h:commandButton value="Add this book!" styleClass="btn btn-primary" action="#{booksMB.addNewBook()}"></h:commandButton>
+				<br />
+				<p class="bg-danger">
+				(*) : Enter All accession numbers for copies separated by semicolon (;).
+				</p>
+			</h:panelGrid>
+		</p:fieldset>
+	</h:form>
+
+</ui:composition>

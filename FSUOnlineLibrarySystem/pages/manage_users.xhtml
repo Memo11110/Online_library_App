@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<meta charset="utf-8" />
+	<title>FSU Online Library System</title>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+	<div class="container mainContent">
+		<div class="row header">
+			<div class="col-md-1">
+				<IMG alt="logo" src="#{resource['images/logo.png']}" id="logo" />
+			</div>
+			<div class="col-md-6">
+				<h3 style="color: white;">FSU Online Library System</h3>
+				<span>Admin Panel</span>
+			</div>
+		</div>
+		<div class="row secondary">
+			<div class="col-md-2 backBtn"
+				onclick="javascript:location.href='index.xhtml'">
+				<IMG alt="home" src="#{resource['images/back.png']}" id="homeImg" />
+				HOME
+			</div>
+			<div class="backBtn" style="margin-left: 92%;"
+				onclick="javascript:location.href='login.xhtml'">
+				<IMG alt="home" src="#{resource['images/exit.png']}" id="homeImg" />
+				Log out
+			</div>
+		</div>
+		<br />
+		<div class="row">
+			<div class="col-md-3 mainMenu">
+				<div class="menulabel">
+					<IMG alt="manage users" src="#{resource['images/menu.png']}" />
+					Main Menu
+				</div>
+				<h:form>
+					<p:menu>
+						<p:submenu label="Users">
+							<p:menuitem value="List Users"
+								actionListener="#{usersMB.goTo('listStudents')}"
+								icon="ui-icon-folder-open" update=":center" ajax="true" />
+							<p:menuitem value="Add new Student"
+								actionListener="#{usersMB.goTo('addNewStudent')}" ajax="true"
+								update=":center" icon="ui-icon-circle-plus" />
+						</p:submenu>
+						<p:submenu label="Adminstrators">
+							<p:menuitem value="List Administrators"
+								actionListener="#{usersMB.goTo('listAdmins')}" ajax="true"
+								update=":center" icon="ui-icon-folder-open" />
+							<p:menuitem value="Add another Administrator"
+								actionListener="#{usersMB.goTo('addNewAdmin')}" ajax="true"
+								update=":center" icon="ui-icon-circle-plus" />
+						</p:submenu>
+						<p:submenu label="Requests">
+							<p:menuitem value="Membership requests"
+								actionListener="#{usersMB.goTo('membershipRequests')}"
+								icon="ui-icon-person" update=":center" />
+						</p:submenu>
+					</p:menu>
+				</h:form>
+			</div>
+			<div class="col-md-9" style="margin-top: -19px;">
+				<h:panelGroup id="center">
+					<h:panelGroup rendered="#{usersMB.action.equals('listStudents')}">
+						<ui:include src="list_students.xhtml" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{usersMB.action.equals('addNewStudent')}">
+						<ui:include src="add_student.xhtml" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{usersMB.action.equals('listAdmins')}">
+						<ui:include src="list_admins.xhtml" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{usersMB.action.equals('addNewAdmin')}">
+						<ui:include src="add_admin.xhtml" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{usersMB.action.equals('updateAdmin')}">
+						<ui:include src="update_admin.xhtml" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{usersMB.action.equals('updateStudent')}">
+						<ui:include src="update_student.xhtml" />
+					</h:panelGroup>
+					<h:panelGroup rendered="#{usersMB.action.equals('membershipRequests')}">
+						<ui:include src="membership_requests.xhtml" />
+					</h:panelGroup>
+					
+				</h:panelGroup>
+			</div>
+		</div>
+		<br />
+		<div class="row footer">
+			<div class="col-md-12">
+				<SPAN class="pull-right">@Copyright 2014</SPAN>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>

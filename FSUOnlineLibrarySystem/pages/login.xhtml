@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta charset="utf-8" />
+	<title>FSU Online Library System</title>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="style.css" />
+</h:head>
+<h:body>
+	
+	<h:form styleClass="loginForm">
+		<p:growl  id="growl"/>
+		<p:fieldset>
+			<legend>
+				<div class="row">
+					<div class="col-md-3">
+						<IMG alt="" src="#{resource['images/logo.png']}" />
+					</div>
+					<div class="col-md-9">
+						<h3>FSU Online Library System</h3>
+						Admin Panel
+					</div>
+				</div>
+			</legend>
+			<h:outputLabel value="Login (*)" for="login" /><br/>
+			<p:inputText id="login" size="50" value="#{adminMB.login}" placeholder="example@mail.com"
+				required="true" requiredMessage="You should enter a login!">
+			</p:inputText>
+			<p:spacer height="20" />
+
+			<h:outputLabel value="Password (*)" for="password" />
+			<p:inputText id="password" size="50" value="#{adminMB.password}" type="password"
+				required="true" requiredMessage="You should enter a password!">
+			</p:inputText>
+			<div class="row">
+				<div class="col-md-9">
+					<p:commandButton
+						styleClass="loginBtn ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-left"
+						icon="ui-icon-circle-check" ajax="false" update="growl"
+						value="Login" action="#{adminMB.login()}" />
+				</div>
+			</div>
+		</p:fieldset>
+
+
+	</h:form>
+
+</h:body>
+</html>

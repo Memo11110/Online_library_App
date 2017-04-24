@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h3>Damage reports from students:</h3>
+	<h:form>
+		<p:dataTable var="report" value="#{booksMB.reports}" rowIndexVar="index" 
+			itemType="none" paginator="true" rows="5" styleClass="paginated" >
+
+			<p:column headerText="#">
+				<h:outputText value="#{index+1}" />
+			</p:column>
+
+			<p:column headerText="Book Title" >
+				<h:outputText value="#{borrowMB.getBookByCopy(report.copy).bookTitle}" />
+			</p:column>
+
+			<p:column headerText="Student Full Name">
+				<h:outputText value="#{report.damageReporter.firstName.concat(' ').concat(report.damageReporter.lastName)}" />
+			</p:column>
+
+			<p:column headerText="Copy Accession Number">
+				<h:outputText value="#{report.copy.accessionNumber}" />
+			</p:column>
+			
+			<p:column headerText="Value">
+				<h:outputText value="#{report.value}" />
+			</p:column>
+			
+			<p:column headerText="Report's date">
+				<h:outputText value="#{report.date}">
+					<f:convertDateTime locale="US"/>
+				</h:outputText>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+
+</ui:composition>

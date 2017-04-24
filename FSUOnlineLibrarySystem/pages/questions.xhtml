@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h3>All non answered questions:</h3>
+	<h:form>
+		<p:dataTable var="quest" value="#{booksMB.allNonAnswQuestions}" rowIndexVar="index" 
+			itemType="none" paginator="true" rows="5" styleClass="paginated" >
+
+			<p:column headerText="#">
+				<h:outputText value="#{index+1}" />
+			</p:column>
+
+			<p:column headerText="Book Title" >
+				<h:outputText value="#{quest.book.bookTitle}" />
+			</p:column>
+
+			<p:column headerText="Student Full Name">
+				<h:outputText value="#{quest.student.firstName.concat(' ').concat(quest.student.lastName)}" />
+			</p:column>
+
+			<p:column headerText="Question">
+				<h:outputText value="#{quest.value}" />
+			</p:column>
+			
+			<p:column headerText="Date">
+				<h:outputText value="#{quest.sendDate}">
+					<f:convertDateTime locale="US"/>
+				</h:outputText>
+			</p:column>
+
+			<p:column headerText="Action" >
+				<p:commandButton  icon="ui-icon-pencil"  styleClass="btn btn-info" value="Answer" action="#{booksMB.goTo('answerQuestion')}" update="@all" >
+					<f:setPropertyActionListener target="#{booksMB.question}" value="#{quest}" />
+				</p:commandButton>
+			</p:column>
+
+		</p:dataTable>
+	</h:form>
+	
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="explode">
+			<p:commandButton value="Yes" type="button" 
+				styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+			<p:commandButton value="No" type="button"
+				styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+	</p:confirmDialog>
+		
+	
+
+</ui:composition>
